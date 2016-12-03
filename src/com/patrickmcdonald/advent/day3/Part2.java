@@ -89,13 +89,10 @@ public class Part2 {
    	 * @param p
    	 * @return
    	 */
-   	public static boolean isValidTriangle(Trie<Integer, Integer, Integer> p){
-   		if((p.getFirst() + p.getSecond()) > p.getThird() && 
-   		   (p.getThird() + p.getSecond()) > p.getFirst() &&
-   		   (p.getThird() + p.getFirst()) > p.getSecond())
-   		   return true;
-   				   
-   		return false;
-   	}
+	public static boolean isValidTriangle(Trie<Integer, Integer, Integer> p){
+		return ((p.getFirst() + p.getSecond()) > p.getThird() && 
+				   (p.getThird() + p.getSecond()) > p.getFirst() &&
+				   (p.getThird() + p.getFirst()) > p.getSecond());
+	}
 
 }

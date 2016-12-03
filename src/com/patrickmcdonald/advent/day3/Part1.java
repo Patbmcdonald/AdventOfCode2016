@@ -52,13 +52,9 @@ public class Part1 {
     }
     
 	public static boolean isValidTriangle(Trie<Integer, Integer, Integer> p){
-		
-		if((p.getFirst() + p.getSecond()) > p.getThird() && 
-		   (p.getThird() + p.getSecond()) > p.getFirst() &&
-		   (p.getThird() + p.getFirst()) > p.getSecond())
-		   return true;
-				   
-		return false;
+		return ((p.getFirst() + p.getSecond()) > p.getThird() && 
+				   (p.getThird() + p.getSecond()) > p.getFirst() &&
+				   (p.getThird() + p.getFirst()) > p.getSecond());
 	}
 
 }
