@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Util {
 	public static String getStringFromFile(File f) throws IOException {
@@ -72,6 +76,45 @@ public class Util {
 
 	public static boolean isDigit(String str) {
 		return str.matches("-?\\d+(\\.\\d+)?"); 
+	}
+	
+	
+	public static <T> Map<T, Integer> getListAsMap(List<T> list){
+	    Map<T, Integer> map = new HashMap<>();
+
+	    for (T t : list) {
+	        Integer val = map.get(t);
+	        map.put(t, val == null ? 1 : val + 1);
+	    }
+	    
+	    return map;
+	}
+	
+	public static <T> T getLeastCommonElement(List<T> list) {
+
+		Map<T, Integer> map = Util.getListAsMap(list);
+		
+	    Entry<T, Integer> min = null;
+
+	    for (Entry<T, Integer> e : map.entrySet()) {
+	        if (min == null || e.getValue() < min.getValue())
+	        	min = e;
+	    }
+
+	    return min.getKey();
+	}
+	
+	public static <T> T getMostCommonElement(List<T> list) {
+		Map<T, Integer> map = Util.getListAsMap(list);
+		
+	    Entry<T, Integer> max = null;
+
+	    for (Entry<T, Integer> e : map.entrySet()) {
+	        if (max == null || e.getValue() > max.getValue())
+	            max = e;
+	    }
+
+	    return max.getKey();
 	}
 
 }
