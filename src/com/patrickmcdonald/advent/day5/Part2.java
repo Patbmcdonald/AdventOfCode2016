@@ -44,6 +44,8 @@ public class Part2 {
 
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 
+		long startTime = System.nanoTime();
+		
 		String input = "cxdnnyjw";
 
 		String[] decryptedPassword = new String[8];
@@ -81,6 +83,12 @@ public class Part2 {
 
 		System.out.println("Password: " + buff.toString());
 		System.out.println("Last Index: " + currentIndex);
+		
+		long endTime = System.nanoTime();
+
+		long duration = (endTime - startTime) / 1000000;
+		
+		System.out.println(duration +"ms");
 	}
 
 }
